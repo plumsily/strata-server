@@ -28,6 +28,10 @@ io.on("connection", (socket) => {
     socket.join(roomId);
     socket.emit("userIsJoined", { success: true });
   });
+  socket.on("text", (data) => {
+    console.log("adding text");
+    socket.broadcast.emit("text", data);
+  });
 });
 
 httpServer.listen(port, () => {
