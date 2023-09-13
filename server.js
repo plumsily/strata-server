@@ -8,6 +8,8 @@ const io = new Server(httpServer, {
   },
 });
 
+const port = process.env.PORT || 3000;
+
 io.on("connection", (socket) => {
   console.log("a user connected");
   socket.on("draw", (data) => {
@@ -28,6 +30,6 @@ io.on("connection", (socket) => {
   });
 });
 
-httpServer.listen(5000, () => {
+httpServer.listen(port, () => {
   console.log("Socket.IO server running on port 5000");
 });
